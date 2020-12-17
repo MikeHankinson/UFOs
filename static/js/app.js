@@ -1,5 +1,8 @@
+// ========================================
 // JS Code to build Dynamnic Table
-// ----------------------------------
+// ========================================
+
+
 
 // 11.2.4 import the data from data.js
 const tableData = data;
@@ -13,8 +16,10 @@ var tbody = d3.select("tbody");
 
 
 
+// Function to Build a Table
+// -----------------------------------------------
 
-function buildTable(data) {
+function buildTable(data); {
     
     // 11.5.1, Clear table using empty string
     tbody.html("");
@@ -41,6 +46,41 @@ function buildTable(data) {
         }
         );
     });
-
-
 }
+
+
+// Function to Filter Data Based Upon User Input
+// -----------------------------------------------
+
+function handleClick(){
+
+    // The D3 .select() function looks for HTML tag with ID of datetime.
+    // chaining .property("value"), D3 grabs the info & holds in "date" varialble. 
+    let date = d3.select("#datetime").property("value");
+
+
+    // Set default filter to original data and set it to a new variable, filteredData
+    let filteredData = tableData;
+
+    // Check to see if a date was entered.  If so, filter the data using the date.
+    // using the .filter() method.  
+    if (date) {
+        filteredData = filteredData.filter(row => row.datetime === date);
+    };
+
+    // After user date input, rebuild the table using 'filteredData' (rather than 'data')
+    // NOTE: If no date was entered, then 'filteredData' will remain the original 'tableData'.  
+    buildTable(filteredData);
+};
+
+
+
+// Attach an Event to Listen for the HTML Form Filter Button ("filter-btn")
+// -----------------------------------------------
+d3.selectAll("#filter-btn").on("click", handleClick);
+
+
+// Build the Final Table -- Returns Table to Original State
+// -----------------------------------------------
+buildTable(tableData);
+
