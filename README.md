@@ -1,16 +1,17 @@
 # UFOs
 
 ## Overview of Analysis
-The project's purpose was to create a dynamic web page that presents historic UFO siting data.  
-
+The project's purpose was to create a dynamic web page to clearly present historic UFO siting data.  
 
 ## Data Source
 Data was presented in the attached javascript file [JavaScript file](static/js/data.js/)
 
-
 ## Built With
-* [Bootstrap](https://getbootstrap.com)
-
+* Visual Studio Code
+* Chrome DevTools
+* JavaScript
+* HTML
+* Bootstrap CSS
 
 ## Results
 1. Write an ETL Function to Read Three Data Files. (Python in Jupyter Notebook)
@@ -26,6 +27,13 @@ Located within this GitHub repository:
 3. ETL_clean_kaggle_data.ipynb
 4. ETL_create_database
 
+
+
+### Skills Learned
+* Built and deployed JavaScript functions, including built-in functions.
+* Converted JavaScript functions to arrow functions.
+* Built and deployed forEach (JavaScript for loop).
+* Created, populated, and dynamically filtered a table using JavaScript and HTML.
 
 ----------------------------------------------------------------------------------
 ### Appendix of Figures and Tables
