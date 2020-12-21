@@ -36,8 +36,13 @@ In order to drill down into the data, the user simply inputs the desired criteri
 <br>
 ## Summary  
 
-The webpage is a fun and visually appealing way for enthusiasts to learn about historical UFO sightings.  
+The webpage is a fun and visually appealing way for enthusiasts to learn about UFO sightings.  Multiple filters provide customizable search items.
 
+The following are 2 slight issues and suggested recommendations to even further enhance the website:
+
+1. Unfortunately, in order to effectively search, the user must properly input search criteria.  For example, if a user wanted to find all sightings in California, they would need to properly input 'ca' into the search field.  Consider adding select menu/dropdown input filters for search criteria city, state, country and shape.  This will ensure the user is able to quickly obtain data important to them.  
+
+2. At this time, a user can only input a single date into the search parameter.  Consider replacing the date text field with a date picker which allows for both a start and ending date for the search.  
 
 ### Skills Learned
 * Built and deployed JavaScript functions, including built-in functions.
