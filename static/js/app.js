@@ -1,86 +1,122 @@
-// ========================================
-// JS Code to build Dynamnic Table
-// ========================================
+// ========================================================
+// JS Code to build Dynamnic Table -- Module 11 Challenge 
+// ========================================================
 
-
-
-// 11.2.4 import the data from data.js
+// from data.js
 const tableData = data;
 
-
-// 11.2.4 Reference the HTML table using d3
+// get table references
 var tbody = d3.select("tbody");
 
-// declare variable tbody
-// use library D3 --> d3.select to look for <tbody> tags (table body)
-
-
-
+// -----------------------------------------------
 // Function to Build a Table
 // -----------------------------------------------
 
-function buildTable(data); {
-    
-    // 11.5.1, Clear table using empty string
-    tbody.html("");
+function buildTable(data) {
+  // First, clear out any existing data
+  tbody.html("");
 
-    //11.5.2  Loop through each object (each object is a UFO sighting) in the data array 
-    // and append rows of data to the table
-    // use forEach Method with Arrow Function
-    data.forEach((dataRow) => {
+  // Next, loop through each object in the data
+  // and append a row and cells for each value in the row
+  data.forEach((dataRow) => {
+    // Append a row to the table body
+    let row = tbody.append("tr");
 
-        // Create a variable to append a row to the table body
-        // <tr> HTML tags are used for each row in a table
-        let row = tbody.append("tr");
-
-
-        // Put each siting into its own row of data
-        // (val) argument represents each item in the object
-        // ie location, duration, etc. 
-        Object.values(dataRow).forEach((val) => {
-            
-            // set up the action of appending data into a table data tag (<td>).
-            let cell = row.append("td");
-            // add the values
-            cell.text(val);
-        }
-        );
+    // Loop through each field in the dataRow and add
+    // each value as a table cell (td)
+    Object.values(dataRow).forEach((val) => {
+      let cell = row.append("td");
+      cell.text(val);
     });
+  });
 }
 
 
+// -----------------------------------------------
 // Function to Filter Data Based Upon User Input
+// filters: date, city, state, country and shape
 // -----------------------------------------------
 
-function handleClick(){
+// 1. Create a variable to keep track of all the filters as an object.
+// Saves element, value and ID of changed filter. 
+var filters = {};
 
-    // The D3 .select() function looks for HTML tag with ID of datetime.
-    // chaining .property("value"), D3 grabs the info & holds in "date" varialble. 
-    let date = d3.select("#datetime").property("value");
+// 3. Use this function to update the filters. 
+function updateFilters() {
 
+    // 4a. Save the element that was changed as a variable.
+    // selects all variables that have changed.
+    // initializes array to store Value and ID
+    let changedElement = d3.select(this);
 
-    // Set default filter to original data and set it to a new variable, filteredData
+    // 4b. Save the value that was changed as a variable.
+    // Holds the Value of the property that has changed
+    let elementValue = changedElement.property("value");
+    console.log(elementValue);
+
+    // 4c. Save the id of the filter that was changed as a variable.
+    // Holds the ID of the ID attribute thta has changed (datetime, city, state, country, shape)
+    let filterId = changedElement.attr("id");
+    console.log(filterId);
+    
+    // 5. If a filter value was entered then add that filterId and value
+    // to the filters list. Otherwise, clear that filter from the filters object.
+    if (elementValue) {
+      filters[filterId]=elementValue;
+    }
+    else {
+      delete filters[filterId];
+    }
+
+    // 6. Call function to apply all filters and rebuild the table
+    filterTable();
+  
+  }
+  
+  // -----------------------------------------------
+  // Function to Update Filter
+  // Loops through the Filters Object.  For each key and value stored, filter the 
+  // UFO table as indicated by the search parameters
+  // -----------------------------------------------
+  // 7. Use this function to filter the table when data is entered.
+  function filterTable() {
+  
+    // 8. Set the filtered data to the tableData.
     let filteredData = tableData;
+  
+    // 9. Loop through all of the filters and keep any data that
+    // matches the filter values
+    for (const [key, value] of Object.entries(filters)) {
+      if(key == "datetime") {
+        filteredData = filteredData.filter(row => row.datetime === value);
+      }
+      if(key == "city") {
+        filteredData = filteredData.filter(row => row.city === value);
+      }
+      if(key == "state") {
+        filteredData = filteredData.filter(row => row.state === value);
+      }
+      if(key == "country") {
+        filteredData = filteredData.filter(row => row.country === value);
+      }
+      if(key == "shape") {
+        filteredData = filteredData.filter(row => row.shape === value);
+      }
+    }
 
-    // Check to see if a date was entered.  If so, filter the data using the date.
-    // using the .filter() method.  
-    if (date) {
-        filteredData = filteredData.filter(row => row.datetime === date);
-    };
-
-    // After user date input, rebuild the table using 'filteredData' (rather than 'data')
-    // NOTE: If no date was entered, then 'filteredData' will remain the original 'tableData'.  
+  
+    // 10. Finally, rebuild the table using the filtered data
     buildTable(filteredData);
-};
+  }
+  
+  // -----------------------------------------------
+  // 2. Attach an event to listen for all search parameters that change on user input.  
+  // -----------------------------------------------
+  d3.selectAll("input").on("change", updateFilters);
 
 
 
-// Attach an Event to Listen for the HTML Form Filter Button ("filter-btn")
-// -----------------------------------------------
-d3.selectAll("#filter-btn").on("click", handleClick);
-
-
-// Build the Final Table -- Returns Table to Original State
-// -----------------------------------------------
-buildTable(tableData);
-
+  // -----------------------------------------------
+  // Build the table when the page loads
+  // -----------------------------------------------
+  buildTable(tableData);
