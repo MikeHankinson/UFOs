@@ -1,4 +1,5 @@
-# UFOs
+# UFO Sightings Webpage
+----------------------------------------------------------------------------------
 
 ## Overview of Analysis
 The project's purpose was to create a dynamic web page to clearly present historic UFO sighting data.  
