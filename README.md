@@ -26,7 +26,7 @@ When the user is greeted to the page, a full set of data is provided in the tabl
 <br>
 <br>
 <br>
-In order to drill down into the data, the user simply inputs the desired criteria based upon the following search parameters: date, city, state, country and shape.  For example, the following image shows data extraction using 3 of the 5 filters (date, state and shape).  
+In order to drill down into the data, the user simply inputs the desired criteria based upon the following search parameters: date, city, state, country and shape.  For example, the following image shows data extraction using 3 of the 5 filters (date, state and shape).  Note that the trimmed down output in the data table matches the entered search criteria.  
 <br>
 <br>
 ![Fig_2](static/images/Filtered.PNG)
