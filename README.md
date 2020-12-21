@@ -5,7 +5,7 @@ The project's purpose was to create a dynamic web page that presents historic UF
 
 
 ## Data Source
-Data was presented in the attached javascript file [JavaScript file](UFOs/static/js/data.js/)
+Data was presented in the attached javascript file [JavaScript file](static/js/data.js/)
 
 
 ## Built With
