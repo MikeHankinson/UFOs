@@ -20,12 +20,20 @@ Data was presented in the attached javascript file [JavaScript file](static/js/d
 4. Create the Movie Database within PostgreSQL. (In pgAdmin4)
 
 ## Summary  
-Located within this GitHub repository:
 
-1. ETL_function_test.ipynb
-2. ETL_clean_wiki_movies.ipynb
-3. ETL_clean_kaggle_data.ipynb
-4. ETL_create_database
+
+
+![Fig_1](static/images/Home_Screen.PNG)
+
+
+
+
+
+![Fig_2](static/images/Filtered.PNG)
+
+
+
+
 
 
 
